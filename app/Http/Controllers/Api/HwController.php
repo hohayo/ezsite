@@ -17,7 +17,7 @@ class HwController extends Controller
             $x = $request->x;
             $y = $request->y;
 
-            if (!is_numeric($x) || !is_numeric('y')) {
+            if (!is_numeric($x) || !is_numeric($y)) {
                 $message = 'x 或 y 不是數字';
             } else {
                 $result = $x * $y;
