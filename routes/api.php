@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('tasks', 'App\Http\Controller\Api\TaskController');
+Route::post('/hw/times',  'App\Http\Controllers\Api\HwController@times');
+
+Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
