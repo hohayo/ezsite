@@ -18,18 +18,6 @@ class TaskSeeder extends Seeder
         Task::truncate();
 
         // 生成新生的資料
-        for ($i = 0; $i < 100; $i++) {
-
-            $rdm = rand(0, 10000000);
-
-            Task::create([
-                'title' => '打掃家裡',
-                'salary' => $rdm,
-                'desc' => "幫忙掃個地 $rdm 分鐘",
-                'enabled' => true,
-            ]);
-        }
-
-
+        Task::factory()->times(100)->create(); // 生成 100 筆資料並寫入資料庫
     }
 }
