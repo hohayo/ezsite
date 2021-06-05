@@ -57,27 +57,30 @@ class TaskController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::find($id)；
+
+        if (isset($task)) {
+            // $task->title = $request->title;
+            // $task->salary = $request->salary;
+            // $task->desc = $request->desc;
+
+            $row =$task->update($request->only([
+                'title',
+                'salary',
+                'desc',
+                'enabled'
+            ]));
+
+            if ($row == 1) {
+                return $this->makeJson(1, $task);
+            } else {
+                return $this->makeJson(0, null, '工作更新失敗');
+            }
+        } else {
+            return $this->makeJson(0, null, '工作新增失敗');
+        }
     }
 
     /**
