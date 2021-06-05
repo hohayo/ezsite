@@ -28,25 +28,22 @@ class TaskController extends Controller
         return $this->makeJson(1, $tasks);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->only([
+            'title',
+            'salary',
+            'desc',
+            'enabled'
+        ]);
+
+        $task = Task::create($data);
+
+        if (isset($task)) {
+            return $this->makeJson(1, $task);
+        } else {
+            return $this->makeJson(0, null, '工作新增失敗');
+        }
     }
 
     /**
