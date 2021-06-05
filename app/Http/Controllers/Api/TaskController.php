@@ -59,13 +59,15 @@ class TaskController extends Controller
 
     public function update(Request $request, $id)
     {
-        $task = Task::find($id)；
+        $task = Task::find($id);
 
         if (isset($task)) {
+
             // $task->title = $request->title;
             // $task->salary = $request->salary;
             // $task->desc = $request->desc;
-
+            // $task->save();
+            // Params OK, Body/form-data 不行, Body/x-www-form... 可以 => form-data 不認得 put 和 patch
             $row =$task->update($request->only([
                 'title',
                 'salary',
@@ -74,7 +76,7 @@ class TaskController extends Controller
             ]));
 
             if ($row == 1) {
-                return $this->makeJson(1, $task);
+                return $this->makeJson(1, $task, '工作更新成功');
             } else {
                 return $this->makeJson(0, null, '工作更新失敗');
             }
