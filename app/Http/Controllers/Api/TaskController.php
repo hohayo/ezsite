@@ -93,6 +93,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $row = $task->delete();
+        if ($row == 1) {
+            return $this->makeJson(1, $task, '工作刪除成功');
+        } else {
+            return $this->makeJson(0, null, '工作刪除失敗');
+        }
     }
 }
