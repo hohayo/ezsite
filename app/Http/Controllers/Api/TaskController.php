@@ -46,15 +46,15 @@ class TaskController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $task = Task::find($id);
+
+        if (isset($task)) {
+            return $this->makeJson(1, $task);
+        } else {
+            return $this->makeJson(0, null, '找不到此工作');
+        }
     }
 
     /**
