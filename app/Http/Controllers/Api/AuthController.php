@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-        if (! $token = auth()->attempt($credentials)) {
+        if (! $token = auth()->guard('api')->attempt($credentials)) {
             return response()->json(['status' => 0, 'message' => '無效的驗證資料'], 401);
         }
         return response()->json(['status' => 1, 'token' => $token]);
