@@ -7,7 +7,7 @@
 
 <body>
     <div class="main" x-data="init()">
-        <h4 class="font-xxlarge">⽤ Alpine.js 來尋找⽂章</h4>
+        <h4 class="font-xxlarge">⽤ Alpine.js 來尋找工作</h4>
         <div class="searchArea">
             <input class="inputText" type="text" placeholder="請輸⼊關鍵字" x-model="q" />
             <button class="bg-default" @click="search()">尋找</button>
@@ -38,7 +38,7 @@
             q: "",
             search: function() {
                 fetch(
-                        "http://demo_api.test/api/posts/query?s=" +
+                        "http://127.0.0.1:8000/api/tasks/title/query?s=" +
                         this.q
                     )
                     .then((response) => response.json())
