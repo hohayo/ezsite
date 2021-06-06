@@ -26,8 +26,8 @@ Route::get('/name/{name}', 'App\Http\Controllers\Api\HelloController@hello');
 
 Route::middleware('auth:api')->group(function() {
     Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
+    Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
 });
-Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
 
 Route::apiResource('categories', 'App\Http\Controllers\Api\CategoryController');
 Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
