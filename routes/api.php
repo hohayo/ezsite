@@ -22,13 +22,14 @@ Route::post('/hw/times',  'App\Http\Controllers\Api\HwController@times');
 
 Route::get('/name/{name}', 'App\Http\Controllers\Api\HelloController@hello');
 
-Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
+Route::middleware('auth:api')->group(function() {
+    Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
+    Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
+});
 
 Route::apiResource('categories', 'App\Http\Controllers\Api\CategoryController');
 Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
 Route::apiResource('tags', 'App\Http\Controllers\Api\TagController');
-
-Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
 
 Route::group(['prefix' => 'auth', 'namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('/', 'AuthController@me')->name('me');
