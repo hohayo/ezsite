@@ -24,7 +24,7 @@
                         </div>
                         <div class="postDetailItem">
                             <span style="padding-right: 5px">內容:</span>
-                            <p x-html="result.content">Hello,World</p>
+                            <p x-html="result.desc">Hello,World</p>
                         </div>
                     </div>
                 </div>
