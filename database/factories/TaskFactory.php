@@ -24,6 +24,7 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->realText(15),
             'salary' => rand(0, 10000000),
+            'pic' => $this->faker->imageUrl($width = 640, $height = 480),
             'desc' => $this->faker->realText,
             'enabled' => $this->faker->randomElement(array(true, false)),
         ];
