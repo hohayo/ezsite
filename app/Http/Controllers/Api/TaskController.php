@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
 class TaskController extends Controller
 {
     // 用於生成 JSON 字串
-    private function  makeJson($status, $data = null, $msg = null)
+    private function makeJson($status, $data = null, $msg = null)
     {
         // 轉 JSON 時確保中文不會變成 Unicode
         return response()->json([
@@ -94,11 +95,18 @@ class TaskController extends Controller
     public function destroy($id)
     {
         $task = Task::find($id);
-        $row = $task->delete();
-        if ($row == 1) {
-            return $this->makeJson(1, $task, '工作刪除成功');
+
+        if ($task) {
+
+            $row = $task->delete();
+
+            if ($row === 1) {
+                return $this->makeJson(1, $task, '工作刪除成功');
+            }  else {
+                return $this->makeJson(0, null, '工作刪除失敗');
+            }
         } else {
-            return $this->makeJson(0, null, '工作刪除失敗');
+            return $this->makeJson(0, null, '找不到此工作');
         }
     }
 }
