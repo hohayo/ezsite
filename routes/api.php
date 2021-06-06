@@ -22,6 +22,8 @@ Route::post('/hw/times',  'App\Http\Controllers\Api\HwController@times');
 
 Route::get('/name/{name}', 'App\Http\Controllers\Api\HelloController@hello');
 
-// Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
-
 Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
+
+Route::apiResource('categories', 'App\Http\Controllers\Api\CategoryController');
+Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
+Route::apiResource('tags', 'App\Http\Controllers\Api\TagController');

@@ -15,6 +15,9 @@ class CreateCrategoriesTable extends Migration
     {
         Schema::create('crategories', function (Blueprint $table) {
             $table->id();
+            $table->string('desc', 200)->nullable();
+            $table->integer('sort')->default(0);
+            $table->tinyInteger('enabled')->default(1);
             $table->timestamps();
         });
     }
