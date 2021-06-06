@@ -24,11 +24,9 @@ Route::post('/hw/times',  'App\Http\Controllers\Api\HwController@times');
 
 Route::get('/name/{name}', 'App\Http\Controllers\Api\HelloController@hello');
 
-Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
-Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
-
 Route::middleware('auth:api')->group(function() {
-
+    Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
+    Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
 });
 
 Route::apiResource('categories', 'App\Http\Controllers\Api\CategoryController');
