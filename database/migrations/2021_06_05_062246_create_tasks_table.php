@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('pic', 255);
+            $table->string('pic', 255)->default('https://picsum.photos/640/480');
             $table->string('title', 100);
             $table->integer('salary')->default(0);
             $table->text('desc')->nullable();

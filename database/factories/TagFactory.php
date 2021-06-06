@@ -21,12 +21,16 @@ class TagFactory extends Factory
      */
     public function definition()
     {
+        //$dateTime = $this->faker->date('Y-m-d') . ' ' . $this->faker->time('H-i-s');
         return [
-            'title' => $this->faker->realText(30),
+            'title' => $this->faker->word,
+            'type' => $this->faker->randomElement(['shop,def','shop','def']),
+            'mode' => NULL,
             'link' => $this->faker->url,
-            'type' =>  $this->faker->realText(10),
-            'sort' => rand(0, 100),
-            'enabled' => $this->faker->randomElement(array(true, false)),
+            'sort' => rand(0,20),
+            'enabled' => rand(0,1)
+            //'created_at' => $dateTime,
+            //'updated_at' => $dateTime
         ];
     }
 }
