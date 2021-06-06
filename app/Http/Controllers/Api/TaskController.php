@@ -109,4 +109,15 @@ class TaskController extends Controller
             return $this->makeJson(0, null, '找不到此工作');
         }
     }
+
+    public function query(Request $request)
+    {
+        $tasks = Task::where('enabled', true)->where('title', 'like', '%' . $request->s  . '%')->orderBy('created_at', 'asc')->get();
+        if ($tasks && count($tasks) > 0) {
+            return $this->makeJson(1, $tasks);
+        } else {
+            return $this->makeJson(0, null, '找不到此工作 ');
+        }
+
+    }
 }

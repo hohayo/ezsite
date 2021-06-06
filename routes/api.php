@@ -27,3 +27,5 @@ Route::apiResource('tasks', 'App\Http\Controllers\Api\TaskController');
 Route::apiResource('categories', 'App\Http\Controllers\Api\CategoryController');
 Route::apiResource('posts', 'App\Http\Controllers\Api\PostController');
 Route::apiResource('tags', 'App\Http\Controllers\Api\TagController');
+
+Route::get('tasks/title/query', 'App\Http\Controllers\Api\TaskController@query');
