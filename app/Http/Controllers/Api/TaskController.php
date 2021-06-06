@@ -122,6 +122,5 @@ class TaskController extends Controller
         } else {
             return $this->makeJson(0, null, '找不到此工作 ');
         }
-
     }
 }
